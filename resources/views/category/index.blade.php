@@ -13,14 +13,16 @@
         <th class="border p-2 bg-gray-200">Category Name</th>
         <th class="border p-2 bg-gray-200">Action</th>
     </tr>
+    @foreach($categories as $category)
     <tr class="text-center">
-        <td class="border p-2">1</td>
-        <td class="border p-2">Electronics</td>
+        <td class="border p-2">{{$category->priority}}</td>
+        <td class="border p-2">{{$category->name}}</td>
         <td class="border p-2">
             <a href="" class="bg-blue-600 text-white px-3 py-1 rounded">Edit</a>
             <a href="" class="bg-red-600 text-white px-3 py-1 rounded">Delete</a>
         </td>
     </tr>
+    @endforeach
 </table>
 
 @endsection

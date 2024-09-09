@@ -11,6 +11,7 @@ Route::get('/', function () {
 //Category
 Route::get('/category',[CategoryController::class,'index'])->name('category.index');
 Route::get('/cateogry/create',[CategoryController::class,'create'])->name('category.create');
+Route::post('/category/store',[CategoryController::class,'store'])->name('category.store');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

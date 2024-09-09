@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
     public function index()
     {
-        return view('category.index');
+        $categories = Category::orderBy('priority')->get();
+        return view('category.index',compact('categories'));
     }
 
     public function create()
@@ -16,8 +18,14 @@ class CategoryController extends Controller
         return view('category.create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-
+        $data = $request->validate([
+            'priority' => 'required',
+            'name' => 'required',
+        ]);
+        Category::create($data);
+        // return redirect(route('category.index'));
+        return redirect()->route('category.index');
     }
 }
