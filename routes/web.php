@@ -12,6 +12,9 @@ Route::get('/', function () {
 Route::get('/category',[CategoryController::class,'index'])->name('category.index');
 Route::get('/cateogry/create',[CategoryController::class,'create'])->name('category.create');
 Route::post('/category/store',[CategoryController::class,'store'])->name('category.store');
+Route::get('/category/{id}/edit',[CategoryController::class,'edit'])->name('category.edit');
+Route::post('/category/{id}/update',[CategoryController::class,'update'])->name('category.update');
+Route::get('/category/{id}/destroy',[CategoryController::class,'destroy'])->name('category.destroy');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -21,11 +21,35 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'priority' => 'required',
+            'priority' => 'required|numeric',
             'name' => 'required',
         ]);
         Category::create($data);
         // return redirect(route('category.index'));
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with('success','Category Created Successfully');
+    }
+
+    public function edit($id)
+    {
+        $category = Category::find($id);
+        return view('category.edit',compact('category'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $data = $request->validate([
+            'priority' => 'required|numeric',
+            'name' => 'required',
+        ]);
+        $category = Category::find($id);
+        $category->update($data);
+        return redirect()->route('category.index')->with('success','Category Updated Successfully');
+    }
+
+    public function destroy($id)
+    {
+        $category = Category::find($id);
+        $category->delete();
+        return redirect()->route('category.index')->with('success','Category Deleted Successfully');
     }
 }

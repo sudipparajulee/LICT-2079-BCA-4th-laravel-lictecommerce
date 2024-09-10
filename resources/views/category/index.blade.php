@@ -18,8 +18,8 @@
         <td class="border p-2">{{$category->priority}}</td>
         <td class="border p-2">{{$category->name}}</td>
         <td class="border p-2">
-            <a href="" class="bg-blue-600 text-white px-3 py-1 rounded">Edit</a>
-            <a href="" class="bg-red-600 text-white px-3 py-1 rounded">Delete</a>
+            <a href="{{route('category.edit',$category->id)}}" class="bg-blue-600 text-white px-3 py-1 rounded">Edit</a>
+            <a href="{{route('category.destroy',$category->id)}}" class="bg-red-600 text-white px-3 py-1 rounded" onclick="return confirm('Are you sure to Delete?')">Delete</a>
         </td>
     </tr>
     @endforeach
