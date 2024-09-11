@@ -27,7 +27,7 @@
                         <a href="{{route('category.index')}}" class="block hover:bg-gray-200 p-4 rounded-lg font-bold text-xl">Categories</a>
                     </li>
                     <li>
-                        <a href="{{route('dashboard')}}" class="block hover:bg-gray-200 p-4 rounded-lg font-bold text-xl">Products</a>
+                        <a href="{{route('product.index')}}" class="block hover:bg-gray-200 p-4 rounded-lg font-bold text-xl">Products</a>
                     </li>
                     <li>
                         <a href="{{route('dashboard')}}" class="block hover:bg-gray-200 p-4 rounded-lg font-bold text-xl">Orders</a>
