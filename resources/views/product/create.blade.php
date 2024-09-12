@@ -3,12 +3,12 @@
 <h1 class="text-4xl font-extrabold text-blue-900">Create Product</h1>
 <hr class="h-1 bg-red-500">
 
-<form action="{{route('product.store')}}" method="POST" class="mt-5">
+<form action="{{route('product.store')}}" method="POST" class="mt-5" enctype="multipart/form-data">
     @csrf
     <select name="category_id" id="" class="w-full rounded-lg my-2">
-        <option value="">Electronics</option>
-        <option value="">Electronics</option>
-        <option value="">Electronics</option>
+        @foreach($categories as $category)
+        <option value="{{$category->id}}">{{$category->name}}</option>
+        @endforeach
     </select>
     <input type="text" placeholder="Enter Product Name" name="name" class="w-full rounded-lg my-2" value="{{old('name')}}">
     @error('name')
@@ -34,6 +34,11 @@
     @error('stock')
         <p class="text-red-500 -mt-2">{{$message}}</p>
     @enderror
+
+    <select name="status" id="" class="w-full rounded-lg my-2">
+        <option value="Show">Show</option>
+        <option value="Hide">Hide</option>
+    </select>
 
     <input type="file" name="photopath" class="w-full rounded-lg my-2">
     @error('photopath')
