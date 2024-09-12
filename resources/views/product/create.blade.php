@@ -29,5 +29,20 @@
     @error('discounted_price')
         <p class="text-red-500 -mt-2">{{$message}}</p>
     @enderror
+
+    <input type="text" placeholder="Enter Stock" name="stock" class="w-full rounded-lg my-2" value="{{old('stock')}}">
+    @error('stock')
+        <p class="text-red-500 -mt-2">{{$message}}</p>
+    @enderror
+
+    <input type="file" name="photopath" class="w-full rounded-lg my-2">
+    @error('photopath')
+        <p class="text-red-500 -mt-2">{{$message}}</p>
+    @enderror
+
+    <div class="flex justify-center">
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Create Product</button>
+        <a href="{{route('product.index')}}" class="bg-red-500 text-white px-4 py-2 rounded-lg ml-2">Cancel</a>
+    </div>
 </form>
 @endsection
