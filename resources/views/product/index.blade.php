@@ -17,6 +17,7 @@
         <th class="border p-2 bg-gray-200">Discounted Price</th>
         <th class="border p-2 bg-gray-200">Stock</th>
         <th class="border p-2 bg-gray-200">Status</th>
+        <th class="border p-2 bg-gray-200">Category</th>
         <th class="border p-2 bg-gray-200">Action</th>
     </tr>
     @foreach($products as $product)
@@ -31,8 +32,9 @@
         <td class="border p-2">{{$product->discounted_price}}</td>
         <td class="border p-2">{{$product->stock}}</td>
         <td class="border p-2">{{$product->status}}</td>
+        <td class="border p-2">{{$product->category->name}}</td>
         <td class="border p-2">
-            <a href="" class="bg-blue-600 text-white px-3 py-1 rounded">Edit</a>
+            <a href="{{route('product.edit',$product->id)}}" class="bg-blue-600 text-white px-3 py-1 rounded">Edit</a>
             <a href="" class="bg-red-600 text-white px-3 py-1 rounded" onclick="return confirm('Are you sure to Delete?')">Delete</a>
         </td>
     </tr>
