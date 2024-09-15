@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -49,6 +50,10 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::find($id);
+        $products = Product::where('category_id',$id)->count();
+        if($products>0){
+            return redirect()->route('category.index')->with('success','Category Cannot be Deleted, It has products');
+        }
         $category->delete();
         return redirect()->route('category.index')->with('success','Category Deleted Successfully');
     }

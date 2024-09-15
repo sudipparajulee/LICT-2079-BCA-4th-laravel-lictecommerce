@@ -36,7 +36,10 @@
                         <a href="{{route('dashboard')}}" class="block hover:bg-gray-200 p-4 rounded-lg font-bold text-xl">Users</a>
                     </li>
                     <li>
-                        <a href="{{route('dashboard')}}" class="block hover:bg-gray-200 p-4 rounded-lg font-bold text-xl">Logout</a>
+                       <form action="{{route('logout')}}" method="POST">
+                        @csrf
+                        <button type="submit" class="hover:bg-gray-200 p-4 rounded-lg font-bold text-xl w-full text-left">Logout</button>
+                       </form>
                     </li>
                 </ul>
             </nav>
