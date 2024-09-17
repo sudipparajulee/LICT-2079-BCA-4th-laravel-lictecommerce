@@ -18,10 +18,12 @@
         <img src="{{asset('images/lictlogo.png')}}" alt="" class="h-16">
         <div class="flex gap-4">
             <a href="" class="hover:text-blue-900">Home</a>
-            <a href="" class="hover:text-blue-900">Electronics</a>
-            <a href="" class="hover:text-blue-900">Groceries</a>
-            <a href="" class="hover:text-blue-900">Fashion</a>
-            <a href="" class="hover:text-blue-900">Accessories</a>
+            @php
+                $categories = App\Models\Category::orderBy('priority')->get();
+            @endphp
+            @foreach($categories as $category)
+            <a href="" class="hover:text-blue-900">{{$category->name}}</a>
+            @endforeach
             <a href="{{route('login')}}" class="hover:text-blue-900">Login</a>
         </div>
     </nav>

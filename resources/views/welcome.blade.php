@@ -7,7 +7,7 @@
         </div>
         <div class="grid grid-cols-4 gap-10 mt-5">
             @foreach($products as $product)
-            <a href="">
+            <a href="{{route('viewproduct',$product->id)}}">
                 <div class="border rounded-lg bg-gray-100 hover:-translate-y-2 duration-300 shadow hover:shadow-lg">
                     <img src="{{asset('images/products/'.$product->photopath)}}" alt="" class="h-64 w-full object-cover rounded-t-lg">
                     <div class="p-4">

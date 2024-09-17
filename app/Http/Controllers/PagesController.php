@@ -12,4 +12,10 @@ class PagesController extends Controller
         $products = Product::latest()->limit(4)->get();
         return view('welcome', compact('products'));
     }
+
+    public function viewproduct($id)
+    {
+        $product = Product::find($id);
+        return view('viewproduct', compact('product'));
+    }
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',[PagesController::class,'index'])->name('home');
+Route::get('/viewproduct/{id}',[PagesController::class,'viewproduct'])->name('viewproduct');
 
 //Category
 Route::get('/category',[CategoryController::class,'index'])->name('category.index');
