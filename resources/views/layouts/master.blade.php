@@ -8,21 +8,25 @@
     <link rel="icon" href="{{asset('images/lictlogo.png')}}" type="image/x-icon">
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
 </head>
 <body>
     <div class="flex justify-between items-center px-16 py-2 bg-blue-900 text-white">
         <p>F|T|I|Y</p>
         <p>Call Us: 9876543210</p>
     </div>
-    <nav class="shadow bg-white px-16 py-4 flex justify-between items-center mb-10">
+    <nav class="shadow bg-white px-16 py-4 flex justify-between items-center mb-10 sticky top-0 z-50">
         <img src="{{asset('images/lictlogo.png')}}" alt="" class="h-16">
         <div class="flex gap-4">
-            <a href="" class="hover:text-blue-900">Home</a>
+            <a href="{{route('home')}}" class="hover:text-blue-900">Home</a>
             @php
                 $categories = App\Models\Category::orderBy('priority')->get();
             @endphp
             @foreach($categories as $category)
-            <a href="" class="hover:text-blue-900">{{$category->name}}</a>
+            <a href="{{route('categoryproduct',$category->id)}}" class="hover:text-blue-900">{{$category->name}}</a>
             @endforeach
             <a href="{{route('login')}}" class="hover:text-blue-900">Login</a>
         </div>
