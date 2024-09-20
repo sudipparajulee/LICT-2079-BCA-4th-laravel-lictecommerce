@@ -20,7 +20,11 @@
     </div>
     <nav class="shadow bg-white px-16 py-4 flex justify-between items-center mb-10 sticky top-0 z-50">
         <img src="{{asset('images/lictlogo.png')}}" alt="" class="h-16">
-        <div class="flex gap-4">
+        <form action="">
+            <input type="search" class="border border-gray-300 rounded-lg px-3 py-2" placeholder="Search" name="search">
+            <button type="submit" class="bg-blue-900 text-white rounded-lg px-4 py-2">Search</button>
+        </form>
+        <div class="flex gap-4 items-center">
             <a href="{{route('home')}}" class="hover:text-blue-900">Home</a>
             @php
                 $categories = App\Models\Category::orderBy('priority')->get();
@@ -28,7 +32,20 @@
             @foreach($categories as $category)
             <a href="{{route('categoryproduct',$category->id)}}" class="hover:text-blue-900">{{$category->name}}</a>
             @endforeach
+
+            @auth
+            <div class="group relative">
+                <i class="ri-user-3-line text-xl bg-gray-200 p-2 rounded-full cursor-pointer"></i>
+                <div class="absolute hidden group-hover:block top-8 -right-10 bg-white shadow w-32 rounded-md border">
+                    <a href="" class="block py-2 hover:bg-gray-200 p-4 rounded-md">My Cart</a>
+                    <a href="" class="block py-2 hover:bg-gray-200 p-4 rounded-md">My Orders</a>
+                    <a href="" class="block py-2 hover:bg-gray-200 p-4 rounded-md">My Profile</a>
+                    <a href="" class="block py-2 hover:bg-gray-200 p-4 rounded-md">Logout</a>
+                </div>
+            </div>
+            @else
             <a href="{{route('login')}}" class="hover:text-blue-900">Login</a>
+            @endauth
         </div>
     </nav>
     @yield('content')

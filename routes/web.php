@@ -11,21 +11,23 @@ Route::get('/',[PagesController::class,'index'])->name('home');
 Route::get('/viewproduct/{id}',[PagesController::class,'viewproduct'])->name('viewproduct');
 Route::get('/categoryproduct/{id}',[PagesController::class,'categoryproduct'])->name('categoryproduct');
 
-//Category
-Route::get('/category',[CategoryController::class,'index'])->name('category.index');
-Route::get('/cateogry/create',[CategoryController::class,'create'])->name('category.create');
-Route::post('/category/store',[CategoryController::class,'store'])->name('category.store');
-Route::get('/category/{id}/edit',[CategoryController::class,'edit'])->name('category.edit');
-Route::post('/category/{id}/update',[CategoryController::class,'update'])->name('category.update');
-Route::get('/category/{id}/destroy',[CategoryController::class,'destroy'])->name('category.destroy');
+Route::middleware(['auth'])->group(function(){
+    //Category
+    Route::get('/category',[CategoryController::class,'index'])->name('category.index');
+    Route::get('/category/create',[CategoryController::class,'create'])->name('category.create');
+    Route::post('/category/store',[CategoryController::class,'store'])->name('category.store');
+    Route::get('/category/{id}/edit',[CategoryController::class,'edit'])->name('category.edit');
+    Route::post('/category/{id}/update',[CategoryController::class,'update'])->name('category.update');
+    Route::get('/category/{id}/destroy',[CategoryController::class,'destroy'])->name('category.destroy');
 
-//Product
-Route::get('/product',[ProductController::class,'index'])->name('product.index');
-Route::get('/product/create',[ProductController::class,'create'])->name('product.create');
-Route::post('/product/store',[ProductController::class,'store'])->name('product.store');
-Route::get('/product/{id}/edit',[ProductController::class,'edit'])->name('product.edit');
-Route::post('/product/{id}/update',[ProductController::class,'update'])->name('product.update');
-Route::get('/product/{id}/destroy',[ProductController::class,'destroy'])->name('product.destroy');
+    //Product
+    Route::get('/product',[ProductController::class,'index'])->name('product.index');
+    Route::get('/product/create',[ProductController::class,'create'])->name('product.create');
+    Route::post('/product/store',[ProductController::class,'store'])->name('product.store');
+    Route::get('/product/{id}/edit',[ProductController::class,'edit'])->name('product.edit');
+    Route::post('/product/{id}/update',[ProductController::class,'update'])->name('product.update');
+    Route::get('/product/{id}/destroy',[ProductController::class,'destroy'])->name('product.destroy');
+});
 
 Route::get('/dashboard',[DashboardController::class,'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
