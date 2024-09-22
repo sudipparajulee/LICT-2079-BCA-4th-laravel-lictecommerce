@@ -14,11 +14,12 @@
 />
 </head>
 <body>
+    @include('layouts.alert')
     <div class="flex justify-between items-center px-16 py-2 bg-blue-900 text-white">
         <p>F|T|I|Y</p>
         <p>Call Us: 9876543210</p>
     </div>
-    <nav class="shadow bg-white px-16 py-4 flex justify-between items-center mb-10 sticky top-0 z-50">
+    <nav class="shadow bg-white px-16 py-4 flex justify-between items-center mb-10 sticky top-0 z-40">
         <img src="{{asset('images/lictlogo.png')}}" alt="" class="h-16">
         <form action="">
             <input type="search" class="border border-gray-300 rounded-lg px-3 py-2" placeholder="Search" name="search">
@@ -40,7 +41,10 @@
                     <a href="" class="block py-2 hover:bg-gray-200 p-4 rounded-md">My Cart</a>
                     <a href="" class="block py-2 hover:bg-gray-200 p-4 rounded-md">My Orders</a>
                     <a href="" class="block py-2 hover:bg-gray-200 p-4 rounded-md">My Profile</a>
-                    <a href="" class="block py-2 hover:bg-gray-200 p-4 rounded-md">Logout</a>
+                    <form action="{{route('logout')}}" method="POST">
+                        @csrf
+                        <button type="submit" class="block py-2 hover:bg-gray-200 p-4 rounded-md w-full text-left">Logout</button>
+                    </form>
                 </div>
             </div>
             @else
