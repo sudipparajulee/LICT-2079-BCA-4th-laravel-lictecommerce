@@ -38,7 +38,7 @@
             <div class="group relative">
                 <i class="ri-user-3-line text-xl bg-gray-200 p-2 rounded-full cursor-pointer"></i>
                 <div class="absolute hidden group-hover:block top-8 -right-10 bg-white shadow w-32 rounded-md border">
-                    <a href="" class="block py-2 hover:bg-gray-200 p-4 rounded-md">My Cart</a>
+                    <a href="{{route('mycart')}}" class="block py-2 hover:bg-gray-200 p-4 rounded-md">My Cart</a>
                     <a href="" class="block py-2 hover:bg-gray-200 p-4 rounded-md">My Orders</a>
                     <a href="" class="block py-2 hover:bg-gray-200 p-4 rounded-md">My Profile</a>
                     <form action="{{route('logout')}}" method="POST">

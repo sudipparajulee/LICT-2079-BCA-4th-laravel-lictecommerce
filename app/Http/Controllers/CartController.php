@@ -19,4 +19,26 @@ class CartController extends Controller
         Cart::create($data);
         return back()->with('success', 'Product added to cart successfully');
     }
+
+    public function mycart()
+    {
+        $carts = Cart::where('user_id', Auth::id())->get();
+        foreach($carts as $cart){
+            if($cart->product->discounted_price == '')
+            {
+                $cart->total = $cart->product->price * $cart->qty;
+            }
+            else
+            {
+                $cart->total = $cart->product->discounted_price * $cart->qty;
+            }
+        }
+        return view('mycart', compact('carts'));
+    }
+
+    public function destroy($id)
+    {
+        Cart::find($id)->delete();
+        return back()->with('success', 'Product removed from cart successfully');
+    }
 }
