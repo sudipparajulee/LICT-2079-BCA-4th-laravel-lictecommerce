@@ -16,6 +16,14 @@ class CartController extends Controller
         ]);
         $data['user_id'] = Auth::id();
 
+        $cart = Cart::where('user_id',Auth::id())->where('product_id',$data['product_id'])->first();
+        if($cart)
+        {
+            $cart->qty = $data['qty'];
+            $cart->save();
+            return back()->with('success', 'Cart Updated successfully');
+        }
+
         Cart::create($data);
         return back()->with('success', 'Product added to cart successfully');
     }

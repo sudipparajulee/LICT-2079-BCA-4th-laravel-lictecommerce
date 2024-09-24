@@ -47,10 +47,10 @@ class CategoryController extends Controller
         return redirect()->route('category.index')->with('success','Category Updated Successfully');
     }
 
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $category = Category::find($id);
-        $products = Product::where('category_id',$id)->count();
+        $category = Category::find($request->dataid);
+        $products = Product::where('category_id',$request->dataid)->count();
         if($products>0){
             return redirect()->route('category.index')->with('success','Category Cannot be Deleted, It has products');
         }

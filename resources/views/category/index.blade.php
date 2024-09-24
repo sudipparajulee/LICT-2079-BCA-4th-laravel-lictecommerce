@@ -19,10 +19,39 @@
         <td class="border p-2">{{$category->name}}</td>
         <td class="border p-2">
             <a href="{{route('category.edit',$category->id)}}" class="bg-blue-600 text-white px-3 py-1 rounded">Edit</a>
-            <a href="{{route('category.destroy',$category->id)}}" class="bg-red-600 text-white px-3 py-1 rounded" onclick="return confirm('Are you sure to Delete?')">Delete</a>
+            <a class="bg-red-600 text-white px-3 py-1 rounded cursor-pointer" onclick="showPopup('{{$category->id}}')">Delete</a>
         </td>
     </tr>
     @endforeach
 </table>
+
+{{-- Popup Modal --}}
+<div class="fixed bg-gray-600 inset-0 bg-opacity-50 backdrop-blur-sm hidden items-center justify-center" id="popup">
+    <form action="{{route('category.destroy')}}" method="POST" class="bg-white px-10 py-5 rounded-lg text-center">
+        @csrf
+        @method('DELETE')
+        <h3 class="font-bold mb-5 text-lg">Are you sure to Delete?</h3>
+        <input type="hidden" id="dataid" name="dataid">
+        <div class="flex gap-3">
+            <button type="submit" class="bg-blue-600 text-white px-3 py-1 rounded">Yes! Delete</button>
+            <a class="bg-red-600 text-white px-3 py-1 rounded cursor-pointer" onclick="hidePopup()">Cancel</a>
+        </div>
+    </form>
+</div>
+{{-- End of Popup Modal --}}
+
+
+<script>
+    function showPopup(a) {
+        document.getElementById('popup').classList.remove('hidden');
+        document.getElementById('popup').classList.add('flex');
+        document.getElementById('dataid').value = a;
+    }
+
+    function hidePopup() {
+        document.getElementById('popup').classList.remove('flex');
+        document.getElementById('popup').classList.add('hidden');
+    }
+</script>
 
 @endsection
