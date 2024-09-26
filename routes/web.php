@@ -18,7 +18,7 @@ Route::middleware('auth')->group(function(){
     Route::get('cart/{id}/destroy',[CartController::class,'destroy'])->name('cart.destroy');
 });
 
-Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth','admin'])->group(function(){
     //Category
     Route::get('/category',[CategoryController::class,'index'])->name('category.index');
     Route::get('/category/create',[CategoryController::class,'create'])->name('category.create');
@@ -36,7 +36,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/product/{id}/destroy',[ProductController::class,'destroy'])->name('product.destroy');
 });
 
-Route::get('/dashboard',[DashboardController::class,'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard',[DashboardController::class,'dashboard'])->middleware(['auth', 'admin'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
