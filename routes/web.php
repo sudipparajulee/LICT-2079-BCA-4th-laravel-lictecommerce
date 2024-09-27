@@ -16,6 +16,7 @@ Route::middleware('auth')->group(function(){
     Route::post('cart/store',[CartController::class,'store'])->name('cart.store');
     Route::get('mycart',[CartController::class,'mycart'])->name('mycart');
     Route::get('cart/{id}/destroy',[CartController::class,'destroy'])->name('cart.destroy');
+    Route::get('checkout/{cartid}',[PagesController::class,'checkout'])->name('checkout');
 });
 
 Route::middleware(['auth','admin'])->group(function(){
