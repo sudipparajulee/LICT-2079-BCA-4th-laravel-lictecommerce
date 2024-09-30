@@ -30,7 +30,7 @@
                         <a href="{{route('product.index')}}" class="block hover:bg-gray-200 p-4 rounded-lg font-bold text-xl">Products</a>
                     </li>
                     <li>
-                        <a href="{{route('dashboard')}}" class="block hover:bg-gray-200 p-4 rounded-lg font-bold text-xl">Orders</a>
+                        <a href="{{route('order.index')}}" class="block hover:bg-gray-200 p-4 rounded-lg font-bold text-xl">Orders</a>
                     </li>
                     <li>
                         <a href="{{route('dashboard')}}" class="block hover:bg-gray-200 p-4 rounded-lg font-bold text-xl">Users</a>
