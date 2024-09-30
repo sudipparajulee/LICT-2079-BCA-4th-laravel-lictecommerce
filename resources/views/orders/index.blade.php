@@ -14,6 +14,7 @@
         <th class="border p-2 bg-gray-200">Rate</th>
         <th class="border p-2 bg-gray-200">Quantity</th>
         <th class="border p-2 bg-gray-200">Total</th>
+        <th class="border p-2 bg-gray-200">Payment Mode</th>
         <th class="border p-2 bg-gray-200">Status</th>
         <th class="border p-2 bg-gray-200">Action</th>
     </tr>
@@ -30,8 +31,14 @@
             <td class="border p-2">{{$order->price}}</td>
             <td class="border p-2">{{$order->qty}}</td>
             <td class="border p-2">{{$order->qty * $order->price}}</td>
+            <td class="border p-2">{{$order->payment_method}}</td>
             <td class="border p-2">{{$order->status}}</td>
-            <td class="border p-2">Pending Processing Shipping Delivered</td>
+            <td class="border p-2 grid gap-2">
+                <a href="{{route('order.status',[$order->id,'Pending'])}}" class="bg-blue-600 text-white px-2 py-1 rounded-lg">Pending</a>
+                <a href="{{route('order.status',[$order->id,'Processing'])}}" class="bg-green-600 text-white px-2 py-1 rounded-lg">Processing</a>
+                <a href="{{route('order.status',[$order->id,'Shipping'])}}" class="bg-amber-600 text-white px-2 py-1 rounded-lg">Shipping</a>
+                <a href="{{route('order.status',[$order->id,'Delivered'])}}" class="bg-red-600 text-white px-2 py-1 rounded-lg">Delivered</a>
+            </td>
         </tr>
     @endforeach
 </table>

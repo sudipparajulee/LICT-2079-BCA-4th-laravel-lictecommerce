@@ -19,6 +19,7 @@ Route::middleware('auth')->group(function(){
     Route::get('cart/{id}/destroy',[CartController::class,'destroy'])->name('cart.destroy');
     Route::get('checkout/{cartid}',[PagesController::class,'checkout'])->name('checkout');
     Route::get('order/{cartid}/store',[OrderController::class,'store'])->name('order.store');
+    Route::post('order/store',[OrderController::class,'storecod'])->name('order.storecod');
 });
 
 Route::middleware(['auth','admin'])->group(function(){
@@ -40,6 +41,7 @@ Route::middleware(['auth','admin'])->group(function(){
 
     //Orders
     Route::get('/orders',[OrderController::class,'index'])->name('order.index');
+    Route::get('/order/{id}/status/{status}',[OrderController::class,'status'])->name('order.status');
 });
 
 Route::get('/dashboard',[DashboardController::class,'dashboard'])->middleware(['auth', 'admin'])->name('dashboard');

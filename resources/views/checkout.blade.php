@@ -12,7 +12,13 @@
         <input type="hidden" id="failure_url" name="failure_url" value="https://google.com" required>
         <input type="hidden" id="signed_field_names" name="signed_field_names" value="total_amount,transaction_uuid,product_code" required>
         <input type="hidden" id="signature" name="signature" required>
-        <input value="Pay with eSewa" type="submit" class="bg-blue-900 text-white px-3 py-1 rounded block w-32 mx-auto">
+        <input value="Pay with eSewa" type="submit" class="bg-blue-900 text-white px-3 py-1 rounded block w-52 mx-auto">
+    </form>
+
+    <form action="{{route('order.storecod')}}" method="POST" class="mt-4">
+        @csrf
+        <input type="hidden" name="cart_id" value="{{$cart->id}}">
+        <input type="submit" value="Cash On Delivery" class="bg-green-600 text-white px-3 py-1 rounded block w-52 mx-auto">
     </form>
 
     @php
