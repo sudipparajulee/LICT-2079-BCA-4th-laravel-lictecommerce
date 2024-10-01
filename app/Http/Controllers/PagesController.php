@@ -42,4 +42,11 @@ class PagesController extends Controller
         }
         return view('checkout', compact('cart'));
     }
+
+    public function search(Request $request)
+    {
+        $qry = $request->search;
+        $products = Product::where('name','like','%'.$qry.'%')->orWhere('description','like','%'.$qry.'%')->get();
+        return view('search',compact('products'));
+    }
 }
