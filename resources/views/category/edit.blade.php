@@ -5,6 +5,7 @@
 
 <form action="{{route('category.update',$category->id)}}" method="POST" class="mt-5">
     @csrf
+    @method('PUT')
     <input type="text" placeholder="Enter Priority" name="priority" class="w-full rounded-lg my-2" value="{{$category->priority}}">
     @error('priority')
         <p class="text-red-500 -mt-2">{{$message}}</p>

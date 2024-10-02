@@ -25,11 +25,12 @@ Route::middleware('auth')->group(function(){
 
 Route::middleware(['auth','admin'])->group(function(){
     //Category
-    Route::get('/category',[CategoryController::class,'index'])->name('category.index');
-    Route::get('/category/create',[CategoryController::class,'create'])->name('category.create');
-    Route::post('/category/store',[CategoryController::class,'store'])->name('category.store');
-    Route::get('/category/{id}/edit',[CategoryController::class,'edit'])->name('category.edit');
-    Route::post('/category/{id}/update',[CategoryController::class,'update'])->name('category.update');
+    // Route::get('/category',[CategoryController::class,'index'])->name('category.index');
+    // Route::get('/category/create',[CategoryController::class,'create'])->name('category.create');
+    // Route::post('/category/store',[CategoryController::class,'store'])->name('category.store');
+    // Route::get('/category/{id}/edit',[CategoryController::class,'edit'])->name('category.edit');
+    // Route::post('/category/{id}/update',[CategoryController::class,'update'])->name('category.update');
+    Route::resource('category',CategoryController::class);
     Route::delete('/category/destroy',[CategoryController::class,'destroy'])->name('category.destroy');
 
     //Product

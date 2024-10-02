@@ -29,5 +29,35 @@
             <p>Completed Orders: 40</p>
         </div>
 
+        <canvas id="myChart"></canvas>
+
     </div>
+
+     <!-- Required chart.js -->
+     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const data = {
+            labels: ["Pending","Processing","Shipping","Delivered"],
+            datasets: [{
+                label: "Value",
+                data: [200, 50, 150, 200, 100],
+                backgroundColor: [
+                    "rgb(90, 50, 241)",
+                    "rgb(101, 143, 200)",
+                    "rgb(0, 200, 20)",
+                    "rgb(150, 143, 0)",
+                    "rgb(100, 200, 0)",
+                ],
+                hoverOffset: 4,
+            }, ],
+        };
+
+        const configPie2 = {
+            type: "pie",
+            data: dataPie2,
+            options: {},
+        };
+
+        var chartBar = new Chart(document.getElementById("myChart"), configPie2);
+    </script>
 @endsection
