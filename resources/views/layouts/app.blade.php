@@ -56,10 +56,10 @@
                 <img src="{{asset('images/lictlogo.png')}}" alt="" class="w-32 mx-auto mt-4">
                 <ul class="mt-8">
                     <li>
-                        <a href="{{route('dashboard')}}" class="block hover:bg-gray-200 p-4 rounded-lg font-bold text-xl @if(Route::is('dashboard'))  bg-blue-900 text-white hover:bg-blue-700 @endif">Dashboard</a>
+                        <a href="{{route('dashboard')}}" class="block hover:bg-gray-200 p-4 rounded-lg font-bold text-xl @if(Route::is('dashboard'))  bg-blue-900 text-white  hover:bg-blue-800 @endif">Dashboard</a>
                     </li>
                     <li>
-                        <a href="{{route('category.index')}}" class="block hover:bg-gray-200 p-4 rounded-lg font-bold text-xl @if(Route::is('category.*')) bg-blue-900 text-white hover:bg-blue-700 @endif">Categories</a>
+                        <a href="{{route('category.index')}}" class="block hover:bg-gray-200 p-4 rounded-lg font-bold text-xl @if(Route::is('category.*')) bg-blue-900 text-white hover:bg-blue-800 @endif">Categories</a>
                     </li>
                     <li>
                         <a href="{{route('product.index')}}" class="block hover:bg-gray-200 p-4 rounded-lg font-bold text-xl">Products</a>
