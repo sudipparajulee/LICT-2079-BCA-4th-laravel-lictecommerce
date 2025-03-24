@@ -10,4 +10,5 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::get('/categories', [CategoryController::class, 'index']);
+Route::post('/category/store', [CategoryController::class, 'store']);
 Route::get('/latestproduct', [ProductController::class, 'latest']);
