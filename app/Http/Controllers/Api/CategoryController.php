@@ -45,4 +45,25 @@ class CategoryController extends Controller
             'message' => 'Category updated successfully',
         ]);
     }
+
+    public function destory(Request $request)
+    {
+        return response()->json([
+            'success' => true,
+            'message' => 'Category deleted successfully',
+        ]);
+        $category = Category::find($request->id);
+        $product = Product::where('category_id', $category->id)->count();
+        if ($product > 0) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Category has products',
+            ]);
+        }
+        $category->delete();
+        return response()->json([
+            'success' => true,
+            'message' => 'Category deleted successfully',
+        ]);
+    }
 }
