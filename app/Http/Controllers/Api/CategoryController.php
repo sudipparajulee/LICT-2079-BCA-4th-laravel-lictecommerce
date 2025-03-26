@@ -46,12 +46,8 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function destory(Request $request)
+    public function destroy(Request $request)
     {
-        return response()->json([
-            'success' => true,
-            'message' => 'Category deleted successfully',
-        ]);
         $category = Category::find($request->id);
         $product = Product::where('category_id', $category->id)->count();
         if ($product > 0) {
