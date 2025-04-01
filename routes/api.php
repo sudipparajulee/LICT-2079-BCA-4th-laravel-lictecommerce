@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,3 +22,6 @@ Route::get('/latestproduct', [ProductController::class, 'latest']);
 Route::get('/viewproduct/{id}', [ProductController::class, 'viewproduct']);
 
 Route::post('/product/store', [ProductController::class, 'store']);
+
+//Login
+Route::post('/login', [LoginController::class, 'login']);
