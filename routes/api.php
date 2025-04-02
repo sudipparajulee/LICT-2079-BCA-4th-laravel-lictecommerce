@@ -13,15 +13,20 @@ Route::get('/user', function (Request $request) {
 
 //Category
 Route::get('/categories', [CategoryController::class, 'index']);
-Route::post('/category/store', [CategoryController::class, 'store']);
-Route::put('/category/update/{id}', [CategoryController::class, 'update']);
-Route::delete('/category/delete', [CategoryController::class, 'destroy']);
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/category/store', [CategoryController::class, 'store']);
+    Route::put('/category/update/{id}', [CategoryController::class, 'update']);
+    Route::delete('/category/delete', [CategoryController::class, 'destroy']);
+
+    Route::post('/product/store', [ProductController::class, 'store']);
+});
+
 
 //Product
 Route::get('/latestproduct', [ProductController::class, 'latest']);
 Route::get('/viewproduct/{id}', [ProductController::class, 'viewproduct']);
 
-Route::post('/product/store', [ProductController::class, 'store']);
 
 //Login
 Route::post('/login', [LoginController::class, 'login']);

@@ -17,6 +17,8 @@ class LoginController extends Controller
 
         if (Auth::attempt($request->only('email', 'password'))) {
             $user = Auth::user();
+            //delete previous token
+            $user->tokens()->delete();
             $token = $user->createToken('auth_token')->plainTextToken;
 
             return response()->json([
