@@ -12,6 +12,17 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
+        // use quick sort to sort the categories by priority using loop
+        for ($i = 0; $i < count($categories); $i++) {
+            for ($j = 0; $j < count($categories) - 1; $j++) {
+                if ($categories[$j]->priority > $categories[$j + 1]->priority) {
+                    $temp = $categories[$j];
+                    $categories[$j] = $categories[$j + 1];
+                    $categories[$j + 1] = $temp;
+                }
+            }
+        }
+
         return response()->json($categories);
     }
 
