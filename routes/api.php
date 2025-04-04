@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\ProductController;
@@ -20,6 +21,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/category/delete', [CategoryController::class, 'destroy']);
 
     Route::post('/product/store', [ProductController::class, 'store']);
+
+    //Cart
+    Route::get('/cart', [CartController::class, 'index']);
+    Route::post('/cart/store', [CartController::class, 'store']);
 });
 
 
