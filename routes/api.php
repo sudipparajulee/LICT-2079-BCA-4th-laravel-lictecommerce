@@ -14,6 +14,7 @@ Route::get('/user', function (Request $request) {
 
 //Category
 Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/categoryproducts/{id}', [CategoryController::class, 'categoryproducts']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/category/store', [CategoryController::class, 'store']);
