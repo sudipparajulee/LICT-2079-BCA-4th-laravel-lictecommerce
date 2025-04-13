@@ -27,6 +27,16 @@ class CartController extends Controller
 
         $data['user_id'] = Auth::id();
 
+        $check = Cart::where('user_id', $data['user_id'])
+            ->where('product_id', $data['product_id'])
+            ->first();
+        if ($check) {
+            return response()->json([
+                'status' => 409, // Conflict
+                'message' => 'Product is already in cart',
+            ]);
+        }
+
         Cart::create($data);
         return response()->json([
             'status' => 200,
