@@ -32,7 +32,7 @@ class CartController extends Controller
             ->first();
         if ($check) {
             return response()->json([
-                'status' => 409, // Conflict
+                'status' => 400, // Conflict
                 'message' => 'Product is already in cart',
             ]);
         }
@@ -41,6 +41,22 @@ class CartController extends Controller
         return response()->json([
             'status' => 200,
             'message' => 'Product added to cart successfully',
+        ]);
+    }
+
+    public function destroy($id)
+    {
+        $cart = Cart::where('user_id', Auth::id())->where('id', $id)->first();
+        if (!$cart) {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Cart not found',
+            ]);
+        }
+        $cart->delete();
+        return response()->json([
+            'status' => 200,
+            'message' => 'Cart deleted successfully',
         ]);
     }
 }
