@@ -17,6 +17,15 @@ class DashboardController extends Controller
         $processing = Order::where('status','Processing')->count();
         $shipping = Order::where('status','Shipping')->count();
         $delivered = Order::where('status','Delivered')->count();
-        return view('dashboard',compact('categories','products','pending','processing','shipping','delivered'));
+        //categories
+        $allcat = Category::all();
+        $productcount = [];
+        foreach($allcat as $cat){
+            $productcount[] = Product::where('category_id',$cat->id)->count();
+        }
+        $allcat = $allcat->pluck('name');
+        $productcount = json_encode($productcount);
+        $allcat = json_encode($allcat);
+        return view('dashboard',compact('categories','products','pending','processing','shipping','delivered','allcat','productcount'));
     }
 }

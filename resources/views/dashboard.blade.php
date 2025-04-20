@@ -33,6 +33,11 @@
             <canvas id="myChart" ></canvas>
         </div>
 
+        <div>
+            <canvas id="myChart2"></canvas>
+          </div>
+
+
     </div>
 
      <!-- Required chart.js -->
@@ -41,7 +46,7 @@
         const data = {
             labels: ["Pending","Processing","Shipping","Delivered"],
             datasets: [{
-                label: "Value",
+                label: "No. of Orders",
                 data: [{{$pending}}, {{$processing}}, {{$shipping}}, {{$delivered}}],
                 backgroundColor: [
                     "rgb(90, 50, 241)",
@@ -61,4 +66,22 @@
 
         var chartBar = new Chart(document.getElementById("myChart"), configPie2);
     </script>
+
+<script>
+    const ctx = document.getElementById('myChart2');
+
+    new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: {!! $allcat !!},
+        datasets: [{
+          label: '# of Products',
+          data: {!! $productcount !!},
+          borderWidth: 1
+        }]
+      },
+      options: {
+      }
+    });
+  </script>
 @endsection
